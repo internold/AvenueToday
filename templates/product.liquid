@@ -1,3 +1,4 @@
+{% capture captured_page %}
 {% comment %}
   The contents of the product.liquid template can be found in /sections/product-template.liquid
 {% endcomment %}
@@ -14,3 +15,6 @@
     unavailable: {{ 'products.product.unavailable' | t | json }}
   }
 </script>
+
+{% endcapture %}
+{% include 'password-protect' %}
