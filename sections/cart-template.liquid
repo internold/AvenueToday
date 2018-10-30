@@ -1,9 +1,9 @@
 <div data-section-id="{{ section.id }}" data-section-type="cart-template">
 
   {% if cart.item_count > 0 %}
-  
+
   <form action="/cart" method="post" novalidate class="cart">
-      
+
       <!-- CART -->
       <section class="cart-section small-container">
         <div class="container">
@@ -20,7 +20,7 @@
             </div>
             <hr/>
           </div>
-          
+
           <div class="cart">
             <ul class="shopCart">
               {% for item in cart.items %}
@@ -58,30 +58,30 @@
             </ul>
             <div class="row">
               <div class="col-md-6 col-xs-12">
-                <div class="cart-discount">                 
+                <div class="cart-discount">
                   {% if section.settings.enable_discount_box %}
                   <h3>{{ section.settings.discount_text_title }}</h3>
                   <input type="text" name="discount" placeholder="Enter Your Discount Code">
                   <p>{{ section.settings.discount_text }}</p>
                   <br/>
-                  {% endif %}                  
-                  {% if section.settings.enable_cart_notes %}              
+                  {% endif %}
+                  {% if section.settings.enable_cart_notes %}
                   <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
-                  <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>               
-                  {% endif %}                
+                  <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+                  {% endif %}
                 </div>
               </div>
               <div class="col-md-6 col-xs-12">
                 <div class="cart-total">
-                  <h4>Subtotal: <span>{{ cart.total_price | money }}</span></h4>                  
+                  <h4>Subtotal: <span>{{ cart.total_price | money }}</span></h4>
                   {% if section.settings.enable_cart_timer %}
                   <p class="cart_counter"></p>
-                  
+
                   <script>
                     var timer_text = '{{ section.settings.cart_timer_text }}';
                     var expiry_text = '{{ section.settings.cart_expiry_text }}';
                     var timer_in_seconds = '{{ section.settings.cart_timer_in_seconds }}';
-                    var timer_in_minute = timer_in_seconds/60;   
+                    var timer_in_minute = timer_in_seconds/60;
 
                     function createCookie(a, b, c) {
                       if (c) {
@@ -129,9 +129,9 @@
                         }
                       };
                       timer();
-                      var inti = setInterval(timer, 1000);                    
+                      var inti = setInterval(timer, 1000);
 
-                    }                  
+                    }
 
                     var pdm = crtmedir('<div class="countdownholder"><div id="countdownhere">'+ timer_text +' <span id="time"></span></div></div>');
                     if (window.location.href.indexOf('cart') > -1) {
@@ -152,27 +152,27 @@
                           createCookie('prtcntdwn', Date.now() + (ten * 1000), ten + 1);
                         }
                         display = document.querySelector('#time');
-                        startTimer(starttime, ten, display);                       
+                        startTimer(starttime, ten, display);
                       };
                     }
                   </script>
-                  {% endif %}                                 
-                  <button type="submit" name="update" class="checkout-btn update-btn hide">Update</button>                 
+                  {% endif %}
+                  <button type="submit" name="update" class="checkout-btn update-btn hide">Update</button>
                   <button type="submit" name="checkout" class="checkout-btn">Continue to Checkout &raquo;</button>
-                  
+
                   {% if section.settings.enable_benefit_points %}
                   <div class="cart-checkbox">
                   {{ section.settings.benefit_points }}
                   </div>
                   {% endif %}
-                  
+
                 </div>
               </div>
             </div>
-            
-            {% if section.settings.enable_cart_blurb %} 
+
+            {% if section.settings.enable_cart_blurb %}
             <hr>
-            <div class="cart-discount-code-part">  
+            <div class="cart-discount-code-part">
               <div class="row">
                 {% if section.settings.blurb_image %}
                 <figure class="col-md-4 col-xs-12">
@@ -202,9 +202,9 @@
             </div>
           </div>
         </div>
-      </section>      
+      </section>
     </form>
-  
+
   {% else %}
     <div class="empty-page-content text-center">
       <h1>{{ 'cart.general.title' | t }}</h1>
@@ -217,8 +217,8 @@
   {% endif %}
 </div>
 
-<script>  
-  $('.plus-box, .minus-box').on('click', function(event){    
+<script>
+  $('.plus-box, .minus-box').on('click', function(event){
     $('.update-btn').trigger('click');
   });
 </script>
